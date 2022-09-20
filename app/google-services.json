@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "540460430417",
+    "project_id": "mahmoudtask-af0aa",
+    "storage_bucket": "mahmoudtask-af0aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540460430417:android:5b85a74d5e7a9fb4943470",
+        "android_client_info": {
+          "package_name": "mahmoudali.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "540460430417-d22dn4k3rgdg689psvhj1klg4jl26iaq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5ClM1Ixcrv74GWk-kMKnM1buiz2lhO5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "540460430417-d22dn4k3rgdg689psvhj1klg4jl26iaq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
