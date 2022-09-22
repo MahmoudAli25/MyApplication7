@@ -19,25 +19,29 @@ public class SignIn extends AppCompatActivity {
     TextInputEditText EtEmail;
     TextInputEditText EtPass;
     private Button button5;
-    private Button button6;
+    private Button BTsignUp;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in); //يبني واجهة المستعمل بحيث تبني كل الكاىنات الموجوده في ملف التنسيق
-        EtEmail=findViewById(R.id.EtEmail);
-        EtPass=findViewById(R.id.EtPass);
-        button5=findViewById(R.id.button5);
-        button6=findViewById(R.id.button6);
 
-        button6.setOnClickListener(new View.OnClickListener() {
+        EtEmail = findViewById(R.id.EtEmail);
+        EtPass = findViewById(R.id.EtPass);
+        button5 = findViewById(R.id.button5);
+        BTsignUp = findViewById(R.id.BTsignUp);
+
+        BTsignUp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent i= new Intent(SignIn.this,SignUp.class);
+            public void onClick(View view)
+            {
+                Intent i = new Intent(SignIn.this,SignUp.class);
                 startActivity(i);
             }
-        });
+        }
+        );
+
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,7 +49,6 @@ public class SignIn extends AppCompatActivity {
             }
         });
     }
-
     private void checkAndSave()
     {
         String email=EtEmail.getText().toString();
@@ -76,14 +79,17 @@ public class SignIn extends AppCompatActivity {
             FirebaseAuth auth = FirebaseAuth.getInstance();
             auth.signInWithEmailAndPassword(email,passw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
+                /**
+                 * event handler when the mesion is completed
+                 */
                 public void onComplete(@NonNull Task<AuthResult> task)
                 {
-                    if(task.isSuccessful())
+                    if(task.isSuccessful())//يفحص اذا المهم تمت بنجاح
                     {
                         Toast.makeText(SignIn.this, "Successful", Toast.LENGTH_SHORT).show();
-                        Intent G=new Intent(SignIn.this,MainActivity.class);
-                        startActivity(G);
-                        finish();
+                        Intent i=new Intent(SignIn.this,MainActivity.class);
+                        startActivity(i);
+                        finish();//يغلق الشاشه الحاليه
                     }
                     else
                     {
