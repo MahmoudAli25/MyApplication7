@@ -49,7 +49,7 @@ public class SignIn extends AppCompatActivity {
             }
         });
     }
-    private void checkAndSave()
+    private void checkAndSave()//دالة تفحص الحساب وكلمة السر ان كانت مكوبه بشكل صحيح
     {
         String email=EtEmail.getText().toString();
         String passw=EtPass.getText().toString();
@@ -76,7 +76,7 @@ public class SignIn extends AppCompatActivity {
         }
         if(isOK)
         {
-            FirebaseAuth auth = FirebaseAuth.getInstance();
+            FirebaseAuth auth = FirebaseAuth.getInstance();//امر للفاير بيس
             auth.signInWithEmailAndPassword(email,passw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 /**
@@ -86,7 +86,7 @@ public class SignIn extends AppCompatActivity {
                 {
                     if(task.isSuccessful())//يفحص اذا المهم تمت بنجاح
                     {
-                        Toast.makeText(SignIn.this, "Successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignIn.this, "Successful", Toast.LENGTH_SHORT).show();//تظهر رساله في الشاشه من الاسفل
                         Intent i=new Intent(SignIn.this,MainActivity.class);
                         startActivity(i);
                         finish();//يغلق الشاشه الحاليه
