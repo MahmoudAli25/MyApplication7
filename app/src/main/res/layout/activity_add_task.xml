@@ -24,24 +24,19 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ETsub"
+            android:id="@+id/EtSubject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Subject" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <SeekBar
-        android:id="@+id/SKimport"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:id="@+id/SbImport"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="25dp"
-        android:max="10"
-        android:progress="3" />
+        android:layout_height="wrap_content" />
 
     <ImageButton
-        android:id="@+id/IMphoto"
+        android:id="@+id/ImPhoto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_menu_gallery" />

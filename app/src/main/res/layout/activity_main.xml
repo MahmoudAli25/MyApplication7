@@ -13,13 +13,13 @@
         android:layout_height="wrap_content" />
 
     <ImageButton
-        android:id="@+id/IBadd"
+        android:id="@+id/IbAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <ListView
-        android:id="@+id/LST"
+        android:id="@+id/LisQ"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

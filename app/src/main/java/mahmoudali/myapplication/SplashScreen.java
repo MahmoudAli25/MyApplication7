@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
@@ -18,9 +20,22 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run()
             {
-                Intent i=new Intent(SplashScreen.this,SignIn.class);
-                startActivity(i);
-                finish();
+                //فحص هل تم الدخول مسبقا
+                FirebaseAuth auth=FirebaseAuth.getInstance();
+                if (auth.getCurrentUser()==null)
+                {
+                    //اذا لا يدحلنا الى التسجيل
+                    Intent i=new Intent(SplashScreen.this,SignIn.class);
+                    startActivity(i);
+                    finish();
+                }
+                else
+                {
+                    //اذا تواجد تسجيل مسبق يدخل للصفحه الرئيسيه
+                    Intent i=new Intent(SplashScreen.this,MainActivity.class);
+                    startActivity(i);
+                    finish();
+                }
             }
         } ;
         h.postDelayed(r,3000);

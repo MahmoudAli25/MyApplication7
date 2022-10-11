@@ -28,6 +28,7 @@
         <activity
             android:name=".SignIn"
             android:exported="false" />
+        //لكي يبدأ البرنامج بهذه الشاشه
         <activity
             android:name=".SplashScreen"
             android:exported="true">
