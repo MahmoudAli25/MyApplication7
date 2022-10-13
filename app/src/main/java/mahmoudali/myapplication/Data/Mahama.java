@@ -1,8 +1,17 @@
 package mahmoudali.myapplication.Data;
 
+/**
+ * فىه تصف مهمه بادارت المهمات
+ */
 public class Mahama
 {
+    /**
+     * رقم مميز يتم النتاجه من قبل الخادم
+     */
     private String Key;
+    /**
+     * الرقم المميز للمستخدم
+     */
     private String title;
     private String Subject;
     private int important;
