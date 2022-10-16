@@ -50,7 +50,8 @@ public class AddTask extends AppCompatActivity {
         });
     }
 
-    private void checkAndSave() {
+    private void checkAndSave()
+    {
         String title = EtEmail.getText().toString();
         String subject = EtSubject.getText().toString();
         int imp = SbImport.getProgress();
@@ -59,26 +60,36 @@ public class AddTask extends AppCompatActivity {
         m.setTitle(title);
         m.setSubject(subject);
         m.setImportant(imp);
-
+        //استخراج الرقم المميز للمستخدم UID
+        //                                          مستخدم مسبق
         String owner = FirebaseAuth.getInstance().getCurrentUser().getUid();
         m.setOwner(owner);
-
+        //استخراج الرقم المميز للمهمه
         String key = FirebaseDatabase.getInstance().getReference().
-                child("mahamat").child(owner).push().getKey();
+                child("mahamat").
+                //اضافة قيمه جديده
+                child(owner).push().getKey();
         m.setKey(key);
+        //عنوان جذر قاعدة البيانات
         FirebaseDatabase.getInstance().getReference().
-                child(key).setValue(m).addOnCompleteListener(new OnCompleteListener<Void>() {
+                child("mahamat").
+                child(owner).
+                child(key).
+                setValue(m).addOnCompleteListener(new OnCompleteListener<Void>()
+                {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
+                    public void onComplete(@NonNull Task<Void> task)
+                    {
+                        if (task.isSuccessful())
+                        {
                             finish();
                             Toast.makeText(AddTask.this, "added Succesfully", Toast.LENGTH_SHORT).show();
-                        } else {
+                        }
+                        else
+                        {
                             Toast.makeText(AddTask.this, "Add Failled", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
-
     }
 }
