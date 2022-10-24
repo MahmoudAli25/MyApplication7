@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import mahmoudali.myapplication.Data.Mahama;
 
 public class AddTask extends AppCompatActivity {
-    private TextInputEditText EtEmail;
+    private TextInputEditText EtTitle;
     private TextInputEditText EtSubject;
     private SeekBar SbImport;
     private ImageButton ImPhoto;
@@ -34,7 +34,7 @@ public class AddTask extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
-        EtEmail = findViewById(R.id.EtEmail);
+        EtTitle = findViewById(R.id.EtTitle);
         EtSubject = findViewById(R.id.EtSubject);
         SbImport = findViewById(R.id.SbImport);
         ImPhoto = findViewById(R.id.ImPhoto);
@@ -48,11 +48,20 @@ public class AddTask extends AppCompatActivity {
 
             }
         });
+        BtCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent i =new Intent(AddTask.this,MainActivity.class);
+                startActivity(i);
+
+            }
+        });
     }
 
     private void checkAndSave()
     {
-        String title = EtEmail.getText().toString();
+        String title = EtTitle.getText().toString();
         String subject = EtSubject.getText().toString();
         int imp = SbImport.getProgress();
 
