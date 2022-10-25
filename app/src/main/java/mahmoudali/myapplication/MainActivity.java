@@ -23,22 +23,31 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import mahmoudali.myapplication.Data.MahmaAdapter;
+
 public class MainActivity extends AppCompatActivity
 {
+    //3.1 تجهيز الوسيط
+    MahmaAdapter mahmaAdapter;
     SearchView SV;//للبحث عن احد المهام
     ImageButton IbAdd;//لاضافة مهمه جديده الى القائمه
-    ListView LisQ;//قائمة المهم
+    ListView LisQ;//قائمة عرض المهم
 
-    @SuppressLint("WrongViewCast")
-    @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);//نوع الشاشه افقي او عامودي
+        //3.2 بناء الوسيط
+        mahmaAdapter= new MahmaAdapter(getApplicationContext());
 
         SV = findViewById(R.id.SV);
         IbAdd = findViewById(R.id.IbAdd);
+
+        //تجهيز مؤشر لقائمة العرض
         LisQ = findViewById(R.id.LisQ);
+        //3.3 ربط ائمة العرض بالوسيط
+        LisQ.setAdapter(mahmaAdapter);
 
         IbAdd.setOnClickListener(new View.OnClickListener()//لاضافة زر
         {
@@ -119,6 +128,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
+                mahmaAdapter.clear();//يمحا كل اشي بداخله
 
             }
 
