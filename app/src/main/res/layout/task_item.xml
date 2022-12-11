@@ -9,13 +9,13 @@
         android:id="@+id/TvTitle"
         android:layout_width="match_parent"
         android:layout_height="47dp"
-        android:text="TextView" />
+        android:text="title" />
 
     <TextView
         android:id="@+id/TvSubject"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:text="TextView" />
+        android:text="subject" />
 
     <RatingBar
         android:id="@+id/Rb"

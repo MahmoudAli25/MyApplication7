@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import mahmoudali.myapplication.Data.Mahama;
 import mahmoudali.myapplication.Data.MahmaAdapter;
 
 public class MainActivity extends AppCompatActivity
@@ -48,6 +49,10 @@ public class MainActivity extends AppCompatActivity
         LisQ = findViewById(R.id.LisQ);
         //3.3 ربط ائمة العرض بالوسيط
         LisQ.setAdapter(mahmaAdapter);
+        //تشغيل مراقب لاي تغيير على قاعدة البيانات
+        //ويقوم بتنظيف المعطيات الموجوده وتنزيل المعلومات الجديده
+        ReadMahamatFromFireBase();
+
 
         IbAdd.setOnClickListener(new View.OnClickListener()//لاضافة زر
         {
@@ -60,7 +65,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+    public boolean onCreateOptionsMenu(@NonNull Menu menu)
+    {
         getMenuInflater().inflate(R.menu.main_menu,menu);
         return true;
     }
@@ -129,9 +135,15 @@ public class MainActivity extends AppCompatActivity
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
                 mahmaAdapter.clear();//يمحا كل اشي بداخله
+                for (DataSnapshot d: snapshot.getChildren())//d يمر على جميع قيم مبنى المعطيات
+                {
+                    Mahama m =d.getValue(Mahama.class);//استخراج الكاىن المحفوظ
+                    mahmaAdapter.add(m);//اضافة الكائن للوسيط
+                }
+            }
+            private void onr(){
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error)
             {
